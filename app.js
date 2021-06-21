@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const PORT = 5000;
 const User = require("./models/user");
 const bcrypt = require("bcryptjs");
-// const cors = require('cors')
+const cors = require('cors')
 const jwt = require("jsonwebtoken");
 const { JWT_SECRET, MONGOURI } = require("./config/keys");
 const Todo = require("./models/todo");
@@ -20,7 +20,7 @@ mongoose.connection.on("connected", () => {
 mongoose.connection.on("error", (err) => {
   console.log("error", err);
 });
-// app.use(cors())
+app.use(cors())
 
 app.use(express.json());
 
