@@ -6,10 +6,10 @@ const User = require("./models/user");
 const bcrypt = require("bcryptjs");
 const cors = require('cors')
 const jwt = require("jsonwebtoken");
-const { JWT_SECRET, MONGOURI } = require("./config/keys");
+const { JWT_SECRET,MOGOURI } = require("./config/keys");
 const Todo = require("./models/todo");
 
-mongoose.connect(MONGOURI, {
+mongoose.connect(MOGOURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
