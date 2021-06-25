@@ -105,11 +105,13 @@ app.post('/createtodo', requireLogin, async (req, res) => {
 
 
 app.get('/gettodos', requireLogin, async (req, res) => {
-
     const data = await Todo.find({
         todoBy: req.user
     })
-    res.status(200).json({ message: data, statusCode: 200 })
+    // res.status(200).json({ message: data, statusCode: 200 })
+    // res.status(203).json({ statusCode: 203 })
+    res.send({statusCode:204})
+    
 
 
 })
