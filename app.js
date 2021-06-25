@@ -98,23 +98,20 @@ app.post('/createtodo', requireLogin, async (req, res) => {
         res.status(201).json({ message: data, statusCode: 201 })
     } else {
 
-        res.status(404).json({ error: "something went wrong", statusCode: 404 })
+        res.status(404).json({ error: "field can't be empty", statusCode: 404 })
     }
 
 })
 
 
 app.get('/gettodos', requireLogin, async (req, res) => {
-    if (req.user != "") {
-        const data = await Todo.find({
-            todoBy: req.user
-        })
-        res.status(200).json({ message: data, statusCode: 200 })
 
-    } else {
-        res.status(404).json({ error: "something went wrong", statusCode: 404 })
+    const data = await Todo.find({
+        todoBy: req.user
+    })
+    res.status(200).json({ message: data, statusCode: 200 })
 
-    }
+
 })
 
 app.delete('/remove/:id', requireLogin, async (req, res) => {
