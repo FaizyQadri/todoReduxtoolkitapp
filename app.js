@@ -78,7 +78,7 @@ app.post('/signin', async (req, res) => {
         const doMatch = await bcrypt.compare(password, user.password)
         if (doMatch) {
             const token = jwt.sign({ userId: user._id }, JWT_SECRET)
-            res.status(201).json({ token, statusCode: 201 })
+            res.status(200).json({ token, statusCode: 200 })
         } else {
             return res.status(401).json({ error: "email or password is invalid", statusCode: 401 })
         }
@@ -95,7 +95,7 @@ app.post('/createtodo', requireLogin, async (req, res) => {
             todo: req.body.todo,
             todoBy: req.user,
         }).save()
-        res.status(201).json({ message: data, statusCode: 201 })
+        res.status(200).json({ message: data, statusCode: 200 })
     } else {
 
         res.status(404).json({ error: "field can't be empty", statusCode: 404 })
@@ -109,10 +109,6 @@ app.get('/gettodos', requireLogin, async (req, res) => {
         todoBy: req.user
     })
     res.status(200).json({ message: data, statusCode: 200 })
-    // res.status(203).json({ statusCode: 200 })
-    // res.send().json({statusCode:204})
-    
-
 
 })
 
