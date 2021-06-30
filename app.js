@@ -108,7 +108,11 @@ app.get('/gettodos', requireLogin, async (req, res) => {
     const data = await Todo.find({
         todoBy: req.user
     })
-    res.status(200).json({ message: data, statusCode: 200 })
+    if (data) {
+        res.status(200).json({ message: data, statusCode: 200 })
+    } else {
+        res.status(400).json({ message: "Something went wrong", statusCode: 400 })
+    }
 
 })
 

@@ -3,7 +3,7 @@ export const fetch2 = async (api,body)=>{
        method:"post",
        headers:{
            "Content-Type":"application/json",
-           "Authorization":localStorage.getItem('token')
+           "Authorization":await localStorage.getItem('token')
        },
        body:JSON.stringify(body)
    })
@@ -15,7 +15,7 @@ export const fetch3 = async (api,type)=>{
        method:type,
        headers:{
            "Content-Type":"application/json",
-           "Authorization":localStorage.getItem('token')
+           "Authorization":await localStorage.getItem('token')
        }
    })
    return await res.json()
